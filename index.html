@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ÚNICO - Plano de Fisioterapia e Saúde Funcional</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-section img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text h1 {
+            color: #2d5a3d;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo-text p {
+            color: #4a7c59;
+            font-size: 0.9rem;
+        }
+
+        .header-contact {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .phone-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #2d5a3d;
+        }
+
+        .btn {
+            background: #4a7c59;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #3d6b4a;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #4a7c59;
+        }
+
+        .btn-white {
+            background: white;
+            color: #4a7c59;
+        }
+
+        .btn-white:hover {
+            background: #f0f9f3;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #4a7c59 0%, #2d5a3d 100%);
+            color: white;
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h2 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-text .highlight {
+            color: #a8d5ba;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #a8d5ba;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .price-badge {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: white;
+            color: #4a7c59;
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .price-badge .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .price-badge .label {
+            font-size: 0.9rem;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h3 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.25rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid #e8f5e8;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(74, 124, 89, 0.1);
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: #e8f5e8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: #4a7c59;
+            font-size: 1.5rem;
+        }
+
+        .benefit-card h4 {
+            font-size: 1.25rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-card p {
+            color: #666;
+        }
+
+        /* Plans Section */
+        .plans {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #e8f5e8 0%, #e3f2fd 100%);
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .plan-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .plan-card.featured {
+            border-color: #4a7c59;
+            transform: scale(1.05);
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4a7c59;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .bonus-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #4a7c59;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            transform: rotate(12deg);
+        }
+
+        .plan-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .plan-name {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .plan-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4a7c59;
+        }
+
+        .plan-original-price {
+            font-size: 0.9rem;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .plan-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .plan-features li i {
+            color: #4a7c59;
+            margin-top: 0.1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background: #4a7c59;
+            color: white;
+            text-align: center;
+        }
+
+        .contact h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #a8d5ba;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #a8d5ba;
+        }
+
+        .payment-info {
+            color: #a8d5ba;
+            margin-top: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c2c2c;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h5 {
+            margin-bottom: 1rem;
+            color: #4a7c59;
+        }
+
+        .footer-section p, .footer-section div {
+            color: #ccc;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 1rem;
+            text-align: center;
+            color: #999;
+        }
+
+        /* Floating WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-contact {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+            }
+
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .plan-card.featured {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="logo_unico.jpeg" alt="ÚNICO Logo">
+                    <div class="logo-text">
+                        <h1>ÚNICO</h1>
+                        <p>Plano de Fisioterapia e Saúde Funcional</p>
+                    </div>
+                </div>
+                <div class="header-contact">
+                    <div class="phone-info">
+                        <i class="fas fa-phone"></i>
+                        <span>(85) 99961-3330</span>
+                    </div>
+                    <a href="#" class="btn" onclick="openWhatsApp()">
+                        <i class="fab fa-whatsapp"></i>
+                        Fale Conosco
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Cuidado Completo para Toda a <span class="highlight">Família</span></h2>
+                    <p>Fisioterapia, saúde funcional e bem-estar com carência zero para urgências. Proteção que sua família merece.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-white" onclick="openWhatsApp()">
+                            <i class="fab fa-whatsapp"></i>
+                            Assinar Agora
+                        </a>
+                        <a href="#planos" class="btn btn-outline">Ver Planos</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="familia_feliz.jpg" alt="Família Feliz">
+                    <div class="price-badge">
+                        <div class="price">R$ 59,99</div>
+                        <div class="label">A partir de</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <h3>Por que escolher o ÚNICO?</h3>
+                <p>Oferecemos cuidado completo com tecnologia avançada e atendimento humanizado</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Carência Zero</h4>
+                    <p>Para urgências de dor e acidentes pessoais após 24h</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h4>Saúde Integrativa</h4>
+                    <p>Acupuntura, quiropraxia, osteopatia e mais</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Proteção Familiar</h4>
+                    <p>Cobertura para toda a família</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>Prêmios Mensais</h4>
+                    <p>Concorra a procedimentos e benefícios exclusivos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section class="plans" id="planos">
+        <div class="container">
+            <div class="section-header">
+                <h3>Escolha seu Plano</h3>
+                <p>Planos pensados para cada necessidade da sua família</p>
+            </div>
+            <div class="plans-grid">
+                <!-- Plano Benefícios -->
+                <div class="plan-card featured">
+                    <div class="plan-badge">Mais Popular</div>
+                    <div class="plan-header">
+                        <div class="plan-name">ÚNICO BENEFÍCIOS</div>
+                        <div class="plan-description">Proteção familiar</div>
+                        <div class="plan-price">R$ 59,99</div>
+                        <div class="plan-original-price">De R$ 79,99</div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check-circle"></i> Proteção familiar</li>
+                        <li><i class="fas fa-check-circle"></i> Carência zero para acidentes pessoais</li>
+                        <li><i class="fas fa-check-circle"></i> Descontos em consultas e tratamentos</li>
+                        <li><i class="fas fa-check-circle"></i> Concorra a prêmios mensais</li>
+                        <li><i class="fas fa-check-circle"></i> BÔNUS: 20 sessões de fisioterapia/ano*</li>
+                        <li style="font-size: 0.8rem; color: #888; margin-left: 1.5rem;">* A partir de 12 meses de fidelidade</li>
+                    </ul>
+                    <a href="#" class="btn" style="width: 100%;" onclick="openWhatsApp('ÚNICO Único Benefícios')">
+                        <i class="fab fa-whatsapp"></i>
+                        Assinar Único Benefícios
+                    </a>
+                </div>
+
+                <!-- Plano POP -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <div class="plan-name">ÚNICO POP</div>
+                        <div class="plan-description">O melhor da fisioterapia convencional</div>
+                        <div class="plan-price">R$ 359,00</div>
+                        <div class="plan-original-price">De R$ 429,99</div>
+                    </div>
+                    <ul class="plan-features"><li>Bônus de 20 sessões de fisioterapia/ano*</li>
+<li>Inclua até três beneficiários diretos (cônjuge e filhos)</li>
+
+                        <li><i class="fas fa-check-circle"></i> Até 12 sessões/mês</li>
+                        <li><i class="fas fa-check-circle"></i> Fisioterapia Convencional completa</li>
+                        <li><i class="fas fa-check-circle"></i> Consultas com Dr. Gilmar Barros</li>
+                        <li><i class="fas fa-check-circle"></i> Descontos e prêmios mensais</li>
+                    </ul>
+<p class="nota"><small>* não cumulativos.</small></p>
+
+                    <a href="#" class="btn" style="width: 100%;" onclick="openWhatsApp('ÚNICO POP')">
+                        <i class="fab fa-whatsapp"></i>
+                        Assinar POP
+                    </a>
+                </div>
+
+                <!-- Plano Clássico -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <div class="plan-name">ÚNICO CLÁSSICO</div>
+                        <div class="plan-description">Fisioterapia convencional e saúde integrativa</div>
+                        <div class="plan-price">R$ 559,00</div>
+                        <div class="plan-original-price">De R$ 699,99</div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check-circle"></i> Até 12 sessões/mês</li>
+                        <li><i class="fas fa-check-circle"></i> Fisioterapia Convencional + Avançada</li>
+                        <li><i class="fas fa-check-circle"></i> Saúde Integrativa (1 atendimento/mês)</li>
+                        <li><i class="fas fa-check-circle"></i> Descontos e prêmios mensais</li>
+                    </ul>
+                    <a href="#" class="btn" style="width: 100%;" onclick="openWhatsApp('ÚNICO CLÁSSICO')">
+                        <i class="fab fa-whatsapp"></i>
+                        Assinar CLÁSSICO
+                    </a>
+                </div>
+
+                <!-- Plano Premium -->
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <div class="plan-name">ÚNICO PREMIUM</div>
+                        <div class="plan-description">Fisioterapia avançada e mais saúde integrativa</div>
+                        <div class="plan-price">R$ 699,00</div>
+                        <div class="plan-original-price">De R$ 899,99</div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check-circle"></i> Até 12 sessões/mês</li>
+                        <li><i class="fas fa-check-circle"></i> Fisioterapia Completa + Regenerativa</li>
+                        <li><i class="fas fa-check-circle"></i> Saúde Integrativa (1 atendimento/semana)</li>
+                        <li><i class="fas fa-check-circle"></i> Descontos e prêmios mensais</li>
+                    </ul>
+                    <a href="#" class="btn" style="width: 100%;" onclick="openWhatsApp('ÚNICO PREMIUM')">
+                        <i class="fab fa-whatsapp"></i>
+                        Assinar PREMIUM
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h3>Pronto para Cuidar da Sua Saúde?</h3>
+            <p>Entre em contato conosco e descubra como o ÚNICO pode transformar o cuidado com sua família</p>
+            <div class="contact-buttons">
+                <a href="#" class="btn btn-white" onclick="openWhatsApp()">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp: (85) 99961-3330
+                </a>
+                <div class="contact-info">
+                    <i class="fas fa-envelope"></i>
+                    <span>unico@interleben.com.br</span>
+                </div>
+            </div>
+            <div class="payment-info">
+                <p>Pagamento via <strong>Interpag</strong> - Seguro e Confiável</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <img src="logo_unico.jpeg" alt="ÚNICO Logo" style="height: 40px;">
+                        <div>
+                            <h5>ÚNICO</h5>
+                            <p style="margin: 0; color: #999;">InterLeben</p>
+                        </div>
+                    </div>
+                    <p>Plano de Fisioterapia e Saúde Funcional para toda a família.</p>
+                </div>
+                <div class="footer-section">
+                    <h5>Contato</h5>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>(85) 99961-3330</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>unico@interleben.com.br</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-instagram"></i>
+                        <span>@assineunico</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-globe"></i>
+                        <span>assineunico.com.br</span>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h5>Cidades Atendidas</h5>
+                    <p>Fortaleza</p>
+                    <p>Russas</p>
+                    <p>Quixadá</p>
+                    <p>Quixeramobim</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ÚNICO - InterLeben. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <div class="whatsapp-float" onclick="openWhatsApp()">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+    <script>
+        function openWhatsApp(planName = '') {
+            const message = planName 
+                ? `Olá! Tenho interesse no plano ${planName}. Gostaria de mais informações.`
+                : 'Olá! Gostaria de mais informações sobre os planos ÚNICO.';
+            const whatsappUrl = `https://wa.me/5585999613330?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'white';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
+
